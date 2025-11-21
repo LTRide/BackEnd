@@ -3,25 +3,39 @@ import java.util.*;
 
 public class Lot 
 {
-    public int lotStatus;
-    public final int lotNumber;
+    private final String lotName;
+    private Map<Integer, Boolean> spaces = new HashMap<>();
+    private Map<String, Integer> storeSpaceId = new HashMap<>();
+    private final Double timeStamp = null;
+    private final Integer capacity = null; 
 
-    public Lot(int lotNum, int status) 
+    public Lot(String lotName) 
     {
-        lotNumber = lotNum;
-        lotStatus = status;
-        //System.out.println("new lot: " + lotNum + " status: " + status);
+       this.lotName = lotName;
     }
-    public void setStatus(int newStatus)
+    public String getLotName()
     {
-        this.lotStatus = newStatus; 
+        return this.lotName;
     }
-    public int getLotStatus()
+    // Map the sensor to the space
+    public void setSpaceId(String sensorId, Integer spaceId)
     {
-        return lotStatus;
+        this.storeSpaceId.put(sensorId, spaceId);
     }
-    public int getLotNum()
+    //Access the mapped space id
+    public Integer getSpaceId(String sensorId)
     {
-        return lotNumber;
+        return this.storeSpaceId.get(sensorId);
+    }
+    // Update space status
+    public void setSpaceStatus(Boolean status, String sensorId)
+    {
+        Integer spaceId = getSpaceId(sensorId);
+        this.spaces.put(spaceId, status);
+    }
+    //Access the space status
+    public Boolean getSpaceStatus(Integer spaceId)
+    {
+        return this.spaces.get(spaceId);
     }
 }
