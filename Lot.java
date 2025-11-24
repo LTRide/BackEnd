@@ -43,7 +43,7 @@ public class Lot
     {
         this.storeSpaceId.put(sensorId, spaceName);
     }
-    //Access the mapped space id
+    //Access the mapped space name
     public Integer getSpaceName(String sensorId)
     {
         return this.storeSpaceId.get(sensorId);
@@ -59,7 +59,9 @@ public class Lot
     {
         return this.spaces.get(spaceName);
     }
+        
 
+//Run to test 
     public static void main(String [] args)
     {
         System.out.println("Hello World");
@@ -72,7 +74,7 @@ public class Lot
         String sensorId = "N123";
         adminLot.setSpaceName(sensorId, 1);
         
-        Integer spaceName = adminLot.getSpaceName(lotName);
+        Integer spaceName = adminLot.getSpaceName(sensorId);
         adminLot.setSpaceStatus(false, sensorId);
         Boolean spaceStatus = adminLot.getSpaceStatus(spaceName); // Might change ref system
 
