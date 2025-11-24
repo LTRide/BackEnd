@@ -1,5 +1,4 @@
-import java.io.*;
-import java.util.*;
+// CRUFT
 
 public class Lot1 
 {

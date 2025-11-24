@@ -1,0 +1,2 @@
+Make a function to convert time updates to time stamp
+- That is what the time stamp attribute will take
