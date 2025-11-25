@@ -8,7 +8,7 @@ public class Lot
     private Double timeStamp;
     private Integer capacity; 
 
-    public Lot(String lotName) //Maybe change?
+    public Lot(String lotName)
     {
        this.lotName = lotName;
     }
@@ -58,46 +58,54 @@ public class Lot
     public Boolean getSpaceStatus(Integer spaceName)
     {
         return this.spaces.get(spaceName);
-    }
-        
+    }      
 
-//Run to test 
+// Run to test!!
     public static void main(String [] args)
-    {
-        System.out.println("Hello World");
-         
-        Lot adminLot = new Lot("admin lot");
+    { 
+        System.out.println("-----------------------------------------------------------------");
+        Lot adminLot = new Lot("admin lot"); // Instantiates new lot object
         
         String lotName = adminLot.getLotName();
-        System.out.println("Lot name: " + lotName);
+        System.out.println("Lot name: " + lotName); // Prints out lot name
 
         String sensorId = "N123";
-        adminLot.setSpaceName(sensorId, 1);
+        adminLot.setSpaceName(sensorId, 1); // Initializes sensor - parking space relationship
         
         Integer spaceName = adminLot.getSpaceName(sensorId);
-        adminLot.setSpaceStatus(false, sensorId);
-        Boolean spaceStatus = adminLot.getSpaceStatus(spaceName); // Might change ref system
+
+        double random = Math.random()*10;
+        boolean randomStatus;
+        if(((int)random) % 2 == 0) 
+        {
+            randomStatus = true;
+        } else
+        {
+            randomStatus = false;
+        }
+
+        adminLot.setSpaceStatus(randomStatus, sensorId);
+        Boolean spaceStatus = adminLot.getSpaceStatus(spaceName); /* <---------- Might change reference system */
 
         String status;
         if(spaceStatus)
         {
-            status = "full";
+            status = "available";
         }
         else
         {
-            status = "available";
+            status = "full";
         }
-        System.out.println("Lot " + spaceName + " is " + status);
+        System.out.println("Lot space " + spaceName + " is " + status); // Prints out space availability
         
         adminLot.setLotCapacity(14);
         Integer lotCapacity = adminLot.getLotCapacity();
-        System.out.println("Lot capacity: " + lotCapacity);
+        System.out.println("Lot capacity: " + lotCapacity); // Prints out lot capacity
 
         adminLot.setTimeStamp(12.45);
         Double lotTimeStamp = adminLot.getTimeStamp();
-        System.out.println("The lot was updated " + lotTimeStamp + " minutes ago");
+        System.out.println("The lot was updated " + lotTimeStamp + " minutes ago"); // Prints out update status on parking lot data
 
-
-
+        System.out.println("-----------------------------------------------------------------");
     }
 }
