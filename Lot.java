@@ -17,7 +17,7 @@ public class Lot
     {
         return this.lotName;
     }
-    // Access time stamp of parking lot accesability update
+    // Access time stamp of parking lot accessibility update
     public Double getTimeStamp()
     {
         return timeStamp;
